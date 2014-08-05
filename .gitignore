@@ -1,0 +1,13 @@
+/ABSTRACT
+/paper.pdf
+/.xxxnote
+/.draft
+/.blue
+/.deps
+*.swp
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+.DS_Store

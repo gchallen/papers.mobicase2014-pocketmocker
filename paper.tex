@@ -1,0 +1,65 @@
+\input{./include/start.tex}
+
+\ifdefined\isdraft
+  \usepackage{draftwatermark}
+  \SetWatermarkText{Under Submission}
+  \SetWatermarkScale{0.6}
+  \usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \renewcommand{\headrulewidth}{0pt}
+  \lhead{}
+  \chead{Under Submission to MobiCase'14. Do not distribute.}
+  \rhead{}
+\else
+\fi
+
+\begin{document}
+\mainmatter
+\def\thetitle{Objective-Driven Context Mocking for Smartphone Users}
+\def\theauthors{Nick Dirienzo and Geoffrey Challen}
+\urldef{\authorsemail}\path|{nvdirien,challen}@buffalo.edu|
+
+\title{\thetitle}
+\titlerunning{\thetitle}
+
+\author{Nick DiRienzo\and Geoffrey Challen}
+\authorrunning{\theauthors}
+
+\institute{University at Buffalo\\
+338 Davis Hall, Buffalo, NY, 14260--2500\\
+\authorsemail
+}
+\toctitle{\thetitle}
+\tocauthor{\theauthors}
+\maketitle
+
+\hypersetup{
+  pdfinfo={
+    Title={\thetitle},
+    Author={\theauthors},
+  },
+}
+
+\ifdefined\isblue
+\begin{textblock}{1}(6.4,0)
+\noindent\href{http://blue.cse.buffalo.edu}{\includegraphics[width=0.6in]{./figures/logos/blue.jpg}}
+\end{textblock}
+\fi
+
+\input{abstract.tex}
+\input{introduction.tex}
+\input{motivation.tex}
+
+\input{design.tex}
+\input{implementation.tex}
+\input{evaluation.tex}
+
+\input{ethics.tex}
+\input{related.tex}
+\input{future.tex}
+\input{conclusion.tex}
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

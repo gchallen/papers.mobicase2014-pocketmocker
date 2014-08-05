@@ -1,0 +1,139 @@
+% 25 Mar 2014 : GWA : Goal is 1.5 pages including scenarios and a taxonomy of
+% different types of mocking.
+
+\section{Motivation}
+\label{sec-motivation}
+
+Recent studies show that privacy is one of today's smartphone users' top
+concerns with their devices, second only to battery
+life~\cite{truste-privacy}. A plurality of 43\% of users are \textit{not}
+willing to share any information about themselves with a company in exchange
+for a free or subsidized app, despite ad-driven free apps being common on
+mobile app marketplaces. Smartphone privacy receives significant attention
+from both researchers and developers.  Ironically, we believe that while
+privacy protection is a worthwhile goal, privacy itself may be part of the
+smartphone privacy problem.
+
+The reason is that understanding privacy implications requires smartphone
+users to answer difficult questions. If I install and use this app, what will it
+be able to determine about me? How much of the data that this app is
+collecting is really necessary? What are the privacy implications of even the
+legitimate data that this app is collecting? Accurate answers to these
+questions remain elusive at best. There are billions of dollars at stake for
+companies in determining how to do more accurate mobile data analytics, and
+few if any have a business interest in divulging either how their algorithms
+work or what they really know about us. While new tools help smartphone users
+determine how much data smartphone apps collect, what is done with the data
+that is collected remains opaque. Users remain guessing and worried.
+
+Obviously users can always choose not to use apps with which they feel
+uncomfortable.  There are many projects looking at how to make safer
+app marketplaces by preventing malicious apps that \textit{only} want to
+steal personal information.  However, this focus on malicious apps obscures a
+harder truth, viz., even the legitimate data collected by non-malicious apps
+creates a privacy risk for smartphone users. For a typical user who wants to
+read email, browse the web, take pictures, and use social networking
+and messaging clients, legitimate data collection by legitimate apps still
+constitutes a significant risk to their privacy. Even after preventing
+unnecessary data collection by legitimate apps, a tradeoff between privacy
+and usability remains. The only options left to smartphone users at this point
+are to remove useful apps or to cease using their smartphone entirely -- both
+unattractive.
+
+It is at that point that mocking has a role to play. In contrast to the
+uncertainties caused by privacy, mocking provides control. Instead of
+wondering what information an employer required app collects on a
+bring-your-own-device, users can set up mocking objectives that
+ensure that it appears that they work regular hours. Instead of wondering
+which apps might be collecting information about their drinking habits, users
+can set up mocking objectives to conceal their visits to bars. We believe
+that this type of control over their digital identities will be appealing
+to users, since it is similar to the control they already have when
+interacting with other online services. While Facebook users know that
+Facebook is collecting data about them, they also exercise control over the
+impression they create. \PocketMocker{} provides smartphone users with the
+same control over their smartphone-derived digital identities.
+
+\subsection{Mocking Scenarios and Types}
+
+Consider these four scenarios:
+
+\begin{itemize}
+
+\item Bob wants to appear more active. On Monday he takes a walk to get some
+exercise. The next day, he doesn't take a real walk, but while he is sitting
+at his desk his smartphone mocks another walk.
+
+\item Alice wants to appear more healthy, but on Monday she visits a fast
+food restaurant where she enjoys an unwholesome meal. As she eats, however, her
+smartphone mocks a visit to a nearby organic salad delicatessen.
+
+\item Teenager Jerry's parents use a smartphone app to monitor his late-night
+  ventures and to ensure that he returns home by an imposed curfew. One
+  night Jerry remains out on the town later-than-allowed with his friends,
+  but his phone has already mocked him dutifully returning home on time.
+
+\item Carol's employer uses her phone to monitor her attendance. During the
+workday, she surreptitiously slips out for a latte with a friend.  Meanwhile,
+her phone records her apparent continued presence at her desk.
+
+\end{itemize}
+
+These examples highlight the difference between \textit{privacy} and
+\textit{mocking}. None of our characters' objectives can be accomplished
+through privacy, since in each case achieving the objective requires using
+data to manipulate an app. Of course, Jerry could remove the app that his
+parents installed, as could Carol, but his parents and her employer would
+likely notice. In the cases of Alice and Bob, we can assume that
+they have been asked or incentivized to install these health-monitoring apps
+but may not feel fully-comfortable with their operation. Similarly, however,
+removing or disabling the apps may not be an attractive option. We include
+a more in-depth discussion of the practical and ethical implications of
+\PocketMocker{} in Section~\ref{sec-ethics} after establishing the
+feasibility and desirability of our system.
+
+These scenarios also illustrate examples of two different types of
+mocking: record-and-replay and time shifting.
+
+\subsubsection{Record and Replay Mocking}
+
+In record-and-replay mocking the objective can be directly embedded in the
+mocked activity. Bob's recorded walk inherently makes him appear more active
+the more he replays it, and Alice's visit to the healthy restaurant makes her
+appear more healthy. In other cases, the objective can also be to obscure
+another activity, replacing something undesirable with something desirable.
+As Alice replays the desirable visit to the healthy restaurant, it provides
+cover for her undesirable visit to the unhealthy restaurant.
+
+In other cases, \PocketMocker{} users may simply want to have their smartphones
+mock staying in one place while they in fact go to another, as in
+Carol's example when she visits with her friend instead of working. While this
+behavior is similar to that offered by traditional record-and-replay systems,
+this variant requires \PocketMocker{} be able to extend or loop a recorded
+session for an indefinite amount of time in order to mask an activity and to
+ensure time continuity between the mocking trace and the user's real activity.
+
+\subsubsection{Time Shift Mocking}
+
+In time-shift mocking, a user wants it to appear that something that happened
+at one time actually happened at another. Time shifting can move an activity
+later or earlier, the later exemplified by Jerry's example where he wants his
+parents to think that he arrived home punctually. We call the former
+\textit{forward} time shifting and the latter \textit{backward}.
+
+While conceptually similar, forward and backward time shifting create
+different design requirements. Backward time shifting---making something that
+happens in the future appear to happen earlier---requires either being able
+to synthesize a transition from the current context to the mocked context or
+having a pre-recorded trace that accomplishes the same thing. In Jerry's
+example, in order to look like he returned home early, his smartphone must
+either be able to create a location transition from his current location to
+home, or he must have previously recorded this transition.
+
+Forward time shifting is somewhat easier, since the user's real transition can
+be recorded, saved, and then held until the user is ready to replay it at a
+later point in time. If Carol wants to leave work early, she can record her
+transition to home but then delay it for several hours until the working day
+is over. Like record-and-replay, however, this type of mocking also requires
+\PocketMocker{} to be able to dwell in a particular context while the user
+moves to another by looping a portion of a pre-recorded context.
