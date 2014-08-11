@@ -33,6 +33,7 @@ user is walking around.}
 \label{fig-mocking-waze}
 
 \end{figure*}
+
 \begin{wraptable}{r}{0.6\textwidth}
 {\small
 \begin{tabularx}{0.6\textwidth}{lX}
@@ -95,6 +96,29 @@ health-related, like our Alice, so different ads are displayed when the user
 visits the website, or it could be reputation-related as a user may want to
 appear more social than he or she really is.
 
+\begin{wraptable}{r}{0.6\textwidth}
+{\small
+\begin{tabularx}{0.6\textwidth}{lX}
+\textbf{App} & Facebook \\ \toprule
+\textbf{Installs} & 500--1,000~million \\
+\textbf{Objective} & Check-in at mocked location. \\
+  \midrule
+\textbf{Trace Length} & 1 minute 37 seconds \\
+\textbf{Trace Size} & 268~K \\
+\textbf{Location Mocks} & 106 \\
+\textbf{Sensors Used} & {\small GPS, Accelerometer} \\
+\textbf{Sensor Mocks} & 2569 \\
+\textbf{Wifi Mocks} & 0 \\
+\textbf{Location Mocks} & 97 (Cell) \\
+\end{tabularx}
+
+\caption{\textbf{Details of Mocking Facebook.}}
+
+\label{table-mocking-facebook}
+}
+\vspace*{-0.1in}
+\end{wraptable}
+
 To mock a Facebook check-in, we recorded a mocking trace of a walk to the
 nearby Starbucks, which included location, connectivity, and sensor data from
 the accelerometer. Because the trace was collected outdoors, no Wifi scan
@@ -109,16 +133,16 @@ sufficiently.
 
 \begin{figure*}[t]
 
-\begin{subfigure}[t]{2.33in}
-\includegraphics[width=2.33in]{./figures/apps/facebook/facebook1.png}
+\begin{subfigure}[t]{0.33\textwidth}
+\includegraphics[width=\textwidth]{./figures/apps/facebook/facebook1.png}
 \caption{}
 \end{subfigure}%
-\begin{subfigure}[t]{2.33in}
-\includegraphics[width=2.33in]{./figures/apps/facebook/facebook2.png}
+\begin{subfigure}[t]{0.33\textwidth}
+\includegraphics[width=\textwidth]{./figures/apps/facebook/facebook2.png}
 \caption{}
 \end{subfigure}%
-\begin{subfigure}[t]{2.33in}
-\includegraphics[width=2.33in]{./figures/apps/facebook/facebook3.png}
+\begin{subfigure}[t]{0.33\textwidth}
+\includegraphics[width=\textwidth]{./figures/apps/facebook/facebook3.png}
 \caption{}
 \end{subfigure}
 
@@ -129,27 +153,6 @@ half-mile away.}
 \label{fig-mocking-facebook}
 
 \end{figure*}
-
-\begin{table}[t]
-\begin{tabularx}{3.33in}{lX}
-\textbf{App} & Facebook \\ \toprule
-\textbf{Installs} & 500--1,000~million \\
-\textbf{Mocking Objective} & Check-in at mocked location. \\
-  \midrule
-\textbf{Trace Length} & 1 minute 37 seconds \\
-\textbf{Trace Size} & 268~K \\
-\textbf{Location Mocks} & 106 \\
-\textbf{Uses Sensors} & GPS, Accelerometer \\
-\textbf{Sensor Mocks} & 2569 \\
-\textbf{Wifi Scan Mocks} & 0 \\
-\textbf{Cell Location Mocks} & 97 \\
-\end{tabularx}
-
-\caption{\textbf{Mocking Facebook.} Details of our Facebook mocking trace.}
-
-\label{table-mocking-facebook}
-
-\end{table}
 
 \subsubsection{Mocking a game}
 
@@ -171,6 +174,28 @@ to begin again after failing more difficult challenges, or to improve their
 reputation through repetition when using apps that post scores to a public
 leaderboard.
 
+\begin{wraptable}{r}{0.6\textwidth}
+{\small
+\begin{tabularx}{0.6\textwidth}{lX}
+\textbf{App} & Fast Racing 3D \\ \toprule
+\textbf{Installs} & 10--50~million \\
+\textbf{Objective} & Control game play \\ \midrule
+\textbf{Trace Length} & 1 minute 35 seconds \\
+\textbf{Trace Size} & 296~K \\
+\textbf{Location Mocks} & 96 \\
+\textbf{Sensors Used} & {\small GPS, Accelerometer} \\
+\textbf{Sensor Mocks} & 1363 \\
+\textbf{Wifi Mocks} & 96 \\
+\textbf{Location Mocks} & 96 (Cell) \\
+\end{tabularx}
+
+\caption{\textbf{Details of Mocking Waze.}}
+
+\label{table-mocking-waze}
+}
+\vspace*{-0.1in}
+\end{wraptable}
+
 To mock Fast Racing gameplay we recorded a mocking trace of a portion of a
 trip through one of the game's race courses.  This included tracking location,
 connectivity, as well as sensor data from the accelerometer used to control
@@ -187,16 +212,16 @@ Fast Racing mocking session is also available at
 
 \begin{figure*}[t]
 
-\begin{subfigure}[t]{2.33in}
-\includegraphics[width=2.33in]{./figures/apps/fast_racing/fastracing1.png}
+\begin{subfigure}[t]{0.33\textwidth}
+\includegraphics[width=\textwidth]{./figures/apps/fast_racing/fastracing1.png}
 \caption{}
 \end{subfigure}%
-\begin{subfigure}[t]{2.33in}
-\includegraphics[width=2.33in]{./figures/apps/fast_racing/fastracing2.png}
+\begin{subfigure}[t]{0.33\textwidth}
+\includegraphics[width=\textwidth]{./figures/apps/fast_racing/fastracing2.png}
 \caption{}
 \end{subfigure}%
-\begin{subfigure}[t]{2.33in}
-\includegraphics[width=2.33in]{./figures/apps/fast_racing/fastracing3.png}
+\begin{subfigure}[t]{0.33\textwidth}
+\includegraphics[width=\textwidth]{./figures/apps/fast_racing/fastracing3.png}
 \caption{}
 \end{subfigure}
 
@@ -207,29 +232,6 @@ during the mocking session.}
 \label{fig-mocking-game}
 
 \end{figure*}
-
-\begin{table}[t]
-
-\begin{tabularx}{3.33in}{lX}
-\textbf{App} & Fast Racing 3D \\ \toprule
-\textbf{Installs} & 50--100~million \\
-  \textbf{Mocking Objective} & Control game play \\ \midrule
-\textbf{Uses Sensors} & Accelerometer \\
-\textbf{Trace Length} & 1 minute 35 seconds \\
-\textbf{Trace Size} & 296~K \\
-\textbf{Location Mocks} & 96 \\
-\textbf{Uses Sensors} & GPS, Accelerometer \\
-\textbf{Sensor Mocks} & 1363 \\
-\textbf{Wifi Scan Mocks} & 96 \\
-\textbf{Cell Location Mocks} & 96 \\
-\end{tabularx}
-
-\caption{\textbf{Mocking Fast Racing.} Details of our Fast Racing
-  mocking trace.}
-
-\label{table-mocking-game}
-\vspace*{-0.2in}
-\end{table}
 
 \subsection{Users Can Use \PocketMocker{}}
 \label{subsec-usability}
