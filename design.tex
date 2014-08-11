@@ -82,23 +82,18 @@ be well-served by their own intuition.
 
 \subsubsection{Collecting, storing, and replaying traces}
 
-Second, \PocketMocker{} must be able to collect, store, and replay mocking
-traces. Trace collection is currently initiated by the \PocketMocker{} app
-and performed entirely at the app level. To ensure that during mocking
+Second, \PocketMocker{} must be able to collect, store and replay mocking
+traces. Trace collection is currently initiated by the \PocketMocker{} app and
+performed entirely at the app level. To ensure that during mocking
 \PocketMocker{} can return data from any source consistent with the mocked
 context, \PocketMocker{} currently enables all sensors that could provide
-relevant information and samples them aggressively, storing timestamped data
-in a set of local databases. This produces a high energy overhead for mocking
-trace collection, which we measure in more detail in
-Section~\ref{subsec-overhead}, but ensures high mocking fidelity. As one
-optimization to the process of recording mocking traces, \PocketMocker{} uses
-changes to the users current location to trigger the immediate collection of
-location-specific data. For example, when \PocketMocker{} detects a location
-change it immediately stores new Wifi scan results and cellular signal
-strength information. As long as the user is not moving, these kinds of data
-are sampled more slowly. Because traces are recorded only once and replayed
-multiple times, and because the energy overhead of replaying traces is
-minimal, we consider the high overhead for trace recording acceptable.
+relevant information and samples them aggressively, storing timestamped data in
+a set of local databases. As one optimization to the process of recording
+mocking traces, \PocketMocker{} uses changes to the users current location to
+trigger the immediate collection of location-specific data. For example, when
+\PocketMocker{} detects a location change it immediately stores new Wifi scan
+results and cellular signal strength information. As long as the user is not
+moving, these kinds of data are sampled more slowly.
 
 Unlike trace collection, mocking trace replay requires platform support.
 \PocketMocker{} modifies the underlying smartphone platform to add an
