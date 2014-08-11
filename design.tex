@@ -156,20 +156,13 @@ available network but tell apps that they are connected over the mocked Wifi
 network. At present \PocketMocker{} makes no attempt to alter connection
 properties such as latency or bandwidth of the real connection to match the
 mocked connection, and in some cases this is not possible. We leave dealing
-with attempts by suspicious apps to use these properties to pierce the
-mocking context as future work.
-
-A more difficult problem is providing a mocked connection when no real
-connection exists. Since this is impossible, \PocketMocker{} simply
-synchronizes this aspect of the mocking context with the real context and
-does not provide any mocked networking information while a real network is
-unavailable. While this creates variance in the mocking context, networks
-naturally go up and down and a user may have disabled the phone networking
-manually, meaning that lack of networking connectivity at a location where it
-is typically available cannot necessarily be interpreted by an app to mean
-that mocking is happening. Smartphone apps have to naturally handle this kind
-of variation in networking conditions due to mobility and changes in user
-configuration.
+with attempts by suspicious apps to use these properties to pierce the mocking
+context as future work. There is also the problem of providing a mocked
+connection when no real connection exists. Even though this is impossible to
+practically accomplish, we can synchronize with the real context have
+\PocketMocker{} simply return that there is no active data connection because
+networks naturally come and go, so this will not look suspicious to
+applications that are interested in circumventing the mocking context.
 
 \end{itemize}
 

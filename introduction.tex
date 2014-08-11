@@ -29,25 +29,20 @@ do not understand the implications of permissions that apps
 request~\cite{androidperms-soups12}. The ``take-it-or-leave-it'' model used by
 Android provides no options for users uncomfortable with the permissions an app
 requests other than not to install it. Even a more selective
-``take-it-or-break-it'' approach~\cite{apex-asiaccs10} that could allow users to
-enable individual permissions is no cure. Users are still
-forced to make poorly informed tradeoffs between privacy and functionality, as
-it is unclear how an app might behave if denied access to information or fed
-random ersatz values. The result in practice is that users tend to give apps
-the permissions they request.
+``take-it-or-break-it'' approach~\cite{apex-asiaccs10} that could allow users
+to enable individual permissions is no cure. Users are still forced to make
+poorly informed tradeoffs between privacy and functionality, as it is unclear
+how an app might behave if denied access to information or fed random ersatz
+values. The result in practice is that users tend to give apps the permissions
+they request. Overall, permissions are not user-centric as apps request access
+to user data for both legitimate and illegitimate actions: a navigation app may
+use location data for both navigating and for advertising. It is unreasonable
+to expect users to be able to distinguish between legitimate and illegitimate
+information requests, and burdensome and error-prone to ask them to enable data
+sources only when they feel comfortable with what a particular app is doing.
 
 % 25 Mar 2014 : GWA : TODO : Look at the flow permissions paper for some
 % citation inspiration here.
-
-One fundamental problem with all permission-based approaches to protecting
-privacy on smartphones is that many apps legitimately require access to certain
-kinds of sensitive information to function properly. When I am lost, my mapping
-app must know where I am in order to route me to my destination. When I am
-monitoring my fitness, my pedometer must be able to access the accelerometer to
-count the number of steps I take each day. It is unreasonable to expect users
-to be able to distinguish between legitimate and illegitimate information
-requests, and burdensome and error-prone to ask them to enable data sources
-only when they feel comfortable with what a particular app is doing.
 
 Our solution takes a different approach. Instead of focusing on privacy by
 limiting data collection, we aim to improve control by generating synthetic or
@@ -69,14 +64,10 @@ protecting smartphone users' personal data that is orthogonal to privacy, and
 use several examples to illustrate the power of our approach.
 
 \item We describe the design of \PocketMocker{}, a system enabling
-objective-driven context mocking -- that is, a system driven by users'
-objectives in crafting their digital identities.  \PocketMocker{} mocks context
-by capturing and replaying all information that could allow apps to pierce the
-mocking environment: location, network characteristics, and sensor data.
-\PocketMocker{}'s implementation consists of both Android platform
-modifications that allows mocked data to be fed to unsuspecting apps and an app
-that controls the mocking process by allowing users to record and replay
-mocking traces.
+objective-driven context mocking. \PocketMocker{}'s
+implementation consists of both Android platform modifications that allows
+mocked data to be fed to unsuspecting apps and an app that controls the mocking
+process by allowing users to record and replay mocking traces.
 
 \item We evaluate \PocketMocker{} and show it to be both desirable and
 effective. Field testing of a \PocketMocker{} prototype demonstrates that it
