@@ -3,10 +3,10 @@
 \subsection{\PocketMocker{} Can Mock Smartphone Apps}
 \label{subsec-mockingapps}
 
-Having shown that mocking is desirable, we continue by demonstrating that our
-\PocketMocker{} prototype works by using it to mock three smartphone apps. In
-each case we describe the app, discuss why users might want to mock it,
-describe our specific mocking objective and whether it was achieved.
+We continue by demonstrating that our \PocketMocker{} prototype works by using
+it to mock three smartphone apps. In each case we describe the app, discuss why
+users might want to mock it, describe our specific mocking objective and
+whether it was achieved.
 
 \subsubsection{Mocking Maps}
 
@@ -46,9 +46,6 @@ user is walking around.}
 \textbf{Sensor Mocks} & 2773 \\
 \textbf{Wifi Scan Mocks} & 115 \\
 \textbf{Cell Location Mocks} & 117 \\
-\textbf{Video URL} &
-\hyperlink{http://youtu.be/GIqXP6b769c}{\texttt{http://youtu.be/GIqXP6b769c}} \\
-
 \end{tabularx}
 
 \caption{\textbf{Mocking Waze.} Details of our Waze mocking trace.}
@@ -91,18 +88,11 @@ installs. People use Facebook to share content and stay in touch with
 friends.
 
 Our objective in mocking Facebook was to initiate a check-in at a mocked
-location. Like FourSquare, the Facebook app contains a check-in feature
-allowing users to easily report that they are at a particular location, with
-check-ins being posted to their news feed and visible to their friends.
-Initiating mocked check-ins could be done for several reasons. Some Facebook
-users may want to appear more social than they actually are by initiating
-mocked check-ins at popular bars or clubs even on nights when they would
-prefer to stay home. Others may use mocked check-ins to compete for
-promotions provided by locations, or to compete for coveted status such as
-the ``Mayorships'' provided by FourSquare. Some FourSquare users have become
-so interested in earning the title of Mayor at a particular location that
-there is actually an entire website devoted to helping
-them\footnote{\hyperlink{http://whenwillibemayor.com/}{\texttt{http://whenwillibemayor.com/}}}.
+location. Facebook check-ins are shared with friends (and advertisers), so a
+user may want to create a fraudulent check-in for many reasons. It could be
+health-related, like our Alice, so different ads are displayed when the user
+visits the website, or it could be reputation-related as a user may want to
+appear more social than he or she really is.
 
 To mock a Facebook check-in, we recorded a mocking trace of a walk to the
 nearby Starbucks, which included location, connectivity, and sensor data from
@@ -152,8 +142,6 @@ half-mile away.}
 \textbf{Sensor Mocks} & 2569 \\
 \textbf{Wifi Scan Mocks} & 0 \\
 \textbf{Cell Location Mocks} & 97 \\
-\textbf{Video URL} & (Removed for blind review.) \\
-
 \end{tabularx}
 
 \caption{\textbf{Mocking Facebook.} Details of our Facebook mocking trace.}
@@ -233,10 +221,6 @@ during the mocking session.}
 \textbf{Sensor Mocks} & 1363 \\
 \textbf{Wifi Scan Mocks} & 96 \\
 \textbf{Cell Location Mocks} & 96 \\
-\textbf{Video URL} &
-  \hyperlink{http://youtu.be/8fAj5dYFwS0}{\texttt{http://youtu.be/8fAj5dYFwS0}}
-  \\
-
 \end{tabularx}
 
 \caption{\textbf{Mocking Fast Racing.} Details of our Fast Racing
