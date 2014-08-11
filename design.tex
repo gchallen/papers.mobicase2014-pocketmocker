@@ -88,19 +88,13 @@ performed entirely at the app level. To ensure that during mocking
 \PocketMocker{} can return data from any source consistent with the mocked
 context, \PocketMocker{} currently enables all sensors that could provide
 relevant information and samples them aggressively, storing timestamped data in
-a set of local databases. As one optimization to the process of recording
-mocking traces, \PocketMocker{} uses changes to the users current location to
-trigger the immediate collection of location-specific data. For example, when
-\PocketMocker{} detects a location change it immediately stores new Wifi scan
-results and cellular signal strength information. As long as the user is not
-moving, these kinds of data are sampled more slowly.
-
-Unlike trace collection, mocking trace replay requires platform support.
-\PocketMocker{} modifies the underlying smartphone platform to add an
-interface allowing it to inject mocked data. Once the user begins replaying
-the trace, \PocketMocker{} reads data from all sensor databases associated
-with the trace and uses this new interface to inject it into the platform.
-Any app requests for data contained in the mocking then return mocked data.
+a set of local databases. Unlike trace collection, mocking trace replay
+requires platform support.  \PocketMocker{} modifies the underlying smartphone
+platform to add an interface allowing it to inject mocked data. Once the user
+begins replaying the trace, \PocketMocker{} reads data from all sensor
+databases associated with the trace and uses this new interface to inject it
+into the platform.  Any app requests for data contained in the mocking then
+return mocked data.
 
 \subsubsection{Initiating mocking sessions}
 
