@@ -1,33 +1,20 @@
-% 25 Mar 2014 : GWA : Goal is 1 page including bullet contributions at end
-% and paper structure paragraph.
+% 25 Mar 2014 : GWA : Goal is 1 page including bullet contributions at end and
+% paper structure paragraph.
 
-\section{Introduction}
-\label{sec-introduction}
-
-As smartphone apps get smarter, they will be able to determine more
-about our lives through completely passive observation. Mapping services
-already know where we are, sensors reveal whether we walked or drove there,
-social networking apps examine our relationship with the person we came
-to meet, and smartphone-based payment tools~\cite{googlewallet-url}
-reveal what we did. As analytical approaches that fuse data from multiple
-sensors improve, smartphones will likely reveal even deeper facts about
-us: the strength of our friendships, the health of our lifestyle, our
-level of devotion to our job, even our level of happiness.
+\section{Introduction} \label{sec-introduction}
 
 With the digital portraits painted by smartphones becoming ever clearer, we
 believe it is time to give users more control over their smartphone-derived
-digital identities. Many other components of our digital lives already
-provide ways to curate the information we provide in order to mold our
-digital personas. Users of dating sites post pictures that they hope others
-will find attractive, users of photo-sharing sites post more photos of
-themselves out performing interesting activities than of mundane sedentary
-ones, and users of social networking sites carefully choose the movies
-and music they list in their profiles to create a particular desired
-impression. While using these online services requires surrendering some
-amount of privacy, the active participation they require provides users with
-some control over what information they reveal and the impression they
-create. In contrast, the passive data collection that smartphones facilitate
-represents a dangerous simultaneous loss of \textit{both} privacy and control.
+digital identities. Many other components of our digital lives already provide
+ways to curate the information we provide in order to mold our digital
+personas: users on social networking sites can already make themselves look
+more attractive, seem more exciting or interesting by actively selecting
+the pictures they upload or the activities they share. While using these
+online services requires surrendering some amount of privacy, the active
+participation they require provides users with some control over what
+information they reveal and the impression they create. In contrast, the
+passive data collection that smartphones facilitate represents a dangerous
+simultaneous loss of \textit{both} privacy and control.
 
 % 25 Mar 2014 : GWA : TODO : Look at Android Ap Ops
 % http://www.google.com/search?q=android+selective+permissions. Do similar
@@ -37,42 +24,36 @@ represents a dangerous simultaneous loss of \textit{both} privacy and control.
 Today's smartphone platforms have attempted to address this loss of privacy
 through permission mechanisms that limit apps' access to user information.
 Unfortunately, this approach has many well-documented problems: apps request
-permissions they don't need~\cite{taintdroid-osdi,demystified-ccs11}, and
-users do not understand the implications of permissions that apps
-request~\cite{androidperms-soups12}. The ``take-it-or-leave-it'' model used
-by Android provides no options for users uncomfortable with the permissions
-an app requests other than not to install it. Even a more selective
+permissions they don't need~\cite{taintdroid-osdi,demystified-ccs11} and users
+do not understand the implications of permissions that apps
+request~\cite{androidperms-soups12}. The ``take-it-or-leave-it'' model used by
+Android provides no options for users uncomfortable with the permissions an app
+requests other than not to install it. Even a more selective
 ``take-it-or-break-it'' approach~\cite{apex-asiaccs10} that could allow users
-selectively to enable individual permissions is no cure.  Users are still
-forced to make poorly informed tradeoffs between privacy and functionality,
-as it is unclear how an app might behave if denied access to information or
-fed random ersatz values. The result in practice is that users tend to give
-apps the permissions they request.
+to enable individual permissions is no cure. Users are still forced to make
+poorly informed tradeoffs between privacy and functionality, as it is unclear
+how an app might behave if denied access to information or fed random ersatz
+values. The result in practice is that users tend to give apps the permissions
+they request. Overall, permissions are not user-centric as apps request access
+to user data for both legitimate and illegitimate actions: a navigation app may
+use location data for both navigating and for advertising. It is unreasonable
+to expect users to be able to distinguish between legitimate and illegitimate
+information requests, and burdensome and error-prone to ask them to enable data
+sources only when they feel comfortable with what a particular app is doing.
 
 % 25 Mar 2014 : GWA : TODO : Look at the flow permissions paper for some
 % citation inspiration here.
 
-One fundamental problem with all permission-based approaches to protecting
-privacy on smartphones is that many apps legitimately require access to
-certain kinds of sensitive information to function properly. When I am lost,
-my mapping app must know where I am in order to route me to my
-destination. When I am monitoring my fitness, my pedometer must be able to
-access the accelerometer to count the number of steps I take each day. It is
-unreasonable to expect users to be able to distinguish between legitimate and
-illegitimate information requests, and burdensome and error-prone to ask them
-to enable data sources only when they feel comfortable with what a particular
-app is doing.
-
-Our solution takes a different approach. Instead of focusing on privacy by limiting
-data collection, we aim to improve control by generating synthetic or ``mocked''
-data to manipulate data-driven analytics as directed by the user, an approach
-we call \textit{objective-driven context mocking}. In contrast to privacy,
-which aims to limit access to data, mocking reduces the power of legitimate
-data by injecting enough mocked data to achieve user-defined objectives.
-Unlike privacy, which requires hiding data and thus potentially impacting apps'
-functionality, mocking ensures that apps continue to function normally
-during each mocking session, making it simpler for users to understand and
-use.
+Our solution takes a different approach. Instead of focusing on privacy by
+limiting data collection, we aim to improve control by generating synthetic or
+``mocked'' data to manipulate data-driven analytics as directed by the user, an
+approach we call \textit{objective-driven context mocking}. In contrast to
+privacy, which aims to limit access to data, mocking reduces the power of
+legitimate data by injecting enough mocked data to achieve user-defined
+objectives.  Unlike privacy, which requires hiding data and thus potentially
+impacting apps' functionality, mocking ensures that apps continue to function
+normally during each mocking session, making it simpler for users to understand
+and use.
 
 Our paper makes the following contributions:
 
@@ -83,20 +64,15 @@ protecting smartphone users' personal data that is orthogonal to privacy, and
 use several examples to illustrate the power of our approach.
 
 \item We describe the design of \PocketMocker{}, a system enabling
-objective-driven context mocking -- that is, a system driven by users'
-objectives in crafting their digital identities.  \PocketMocker{} mocks
-context by capturing and replaying all information that could allow
-apps to pierce the mocking environment: location,
-network characteristics, and sensor data. \PocketMocker{}'s implementation
-consists of both Android platform modifications that allows mocked data to be
-fed to unsuspecting apps and an app that controls the mocking process by
-allowing users to record and replay mocking traces.
+objective-driven context mocking. \PocketMocker{}'s
+implementation consists of both Android platform modifications that allows
+mocked data to be fed to unsuspecting apps and an app that controls the mocking
+process by allowing users to record and replay mocking traces.
 
 \item We evaluate \PocketMocker{} and show it to be both desirable and
-effective. A survey of smartphone users provides evidence that many would
-like to alter how aspects of their digital identities appear to smartphone
-apps. Field testing of a \PocketMocker{} prototype demonstrates that
-it can successfully mock several popular Android apps.
+effective. Field testing of a \PocketMocker{} prototype demonstrates that it
+can successfully mock several popular Android apps and users are interested in
+using it further.
 
 \end{enumerate}
 
@@ -106,8 +82,6 @@ describe \PocketMocker{}'s design and implementation in
 Sections~\ref{sec-design}~and~\ref{sec-implementation}.
 Section~\ref{sec-evaluation} evaluates our \PocketMocker{} prototype, showing
 both that \PocketMocker{} works and that smartphone users are interested in
-using the capabilities it provides. Section~\ref{sec-ethics} raises and
-discusses some ethical and practical concerns raised by objective-driven
-context mocking. We review related work in Section~\ref{sec-related}, discuss
-future plans in Section~\ref{sec-future}, and conclude in
-Section~\ref{sec-conclusion}.
+using the capabilities it provides. We review related work in
+Section~\ref{sec-related}, discuss future plans in Section~\ref{sec-future},
+and conclude in Section~\ref{sec-conclusion}.

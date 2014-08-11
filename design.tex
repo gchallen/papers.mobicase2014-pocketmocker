@@ -29,20 +29,13 @@ that interacts with the user to record mocking traces and control the mocking
 process. Figure~\ref{fig-design} illustrates the interaction between the two
 parts of \PocketMocker{}.
 
-Once Bob has formulated his objective---to appear more active to his
-smartphone---he is ready to use \PocketMocker{}. The first step is to
-determine what activity will accomplish this objective and to record it. In
-this case, Bob determines that frequent brisk walks will make him appear more
-active. Using the \PocketMocker{} app, he initiates the context recording
-process and goes out for a model walk. \PocketMocker{} records every piece of
-information it might need later during the mocking process: his GPS location,
-the cell towers to which he is connected, visible Wifi access points, and
-readings from onboard sensors such as the accelerometer and thermometer---all
-appropriately timestamped. Because \PocketMocker{} does not know what apps
-will be running during future mocking sessions or what data they will request,
-it records as much information as possible even if it is not requested by apps
-during the original recording session. This data set comprises the
-\textit{mocking trace}.
+Bob knows his objective: to appear more active. All he has to do now is collect
+some sample data so \PocketMocker{} can inject mocked data to the apps on his
+smartphone when he wants to be active. First, he must record a mocking trace of
+his desired outcome---in this case, the action is taking a walk. During this
+phase, \PocketMocker{} records all sensor data---such as GPS, cell tower
+metadata, visible WiFi access points and more---on the device to provide a
+concrete mocking context. All of this data combined is known as the \textit{mocking trace}.
 
 Once the trace is recorded, Bob can replay it as often as he likes. During the
 mocking process, \PocketMocker{} exploits changes to the underlying
@@ -58,12 +51,8 @@ objective-driven context mocking system. First, the user's objective must be
 determined and a mocking activity suggested. Second, a mocking trace must be
 recorded and linked to the user's objective. Finally, the trace must be
 deployed as needed to achieve the user's mocking objective. We describe how
-\PocketMocker{} accomplishes these tasks below. We also address how
-\PocketMocker{} overcomes two challenges that might allow apps to detect the
-mocking process: differences between the mocking trace and the real current
-context, and spatial discontinuities. Time-shift mocking has somewhat
-different requirements, and we discuss them separately at the end of this
-section.
+\PocketMocker{} accomplishes these tasks and overcomes two consistency
+challenges below.
 
 \subsubsection{Linking mocking traces and objectives}
 
@@ -82,30 +71,19 @@ be well-served by their own intuition.
 
 \subsubsection{Collecting, storing, and replaying traces}
 
-Second, \PocketMocker{} must be able to collect, store, and replay mocking
-traces. Trace collection is currently initiated by the \PocketMocker{} app
-and performed entirely at the app level. To ensure that during mocking
+Second, \PocketMocker{} must be able to collect, store and replay mocking
+traces. Trace collection is currently initiated by the \PocketMocker{} app and
+performed entirely at the app level. To ensure that during mocking
 \PocketMocker{} can return data from any source consistent with the mocked
 context, \PocketMocker{} currently enables all sensors that could provide
-relevant information and samples them aggressively, storing timestamped data
-in a set of local databases. This produces a high energy overhead for mocking
-trace collection, which we measure in more detail in
-Section~\ref{subsec-overhead}, but ensures high mocking fidelity. As one
-optimization to the process of recording mocking traces, \PocketMocker{} uses
-changes to the users current location to trigger the immediate collection of
-location-specific data. For example, when \PocketMocker{} detects a location
-change it immediately stores new Wifi scan results and cellular signal
-strength information. As long as the user is not moving, these kinds of data
-are sampled more slowly. Because traces are recorded only once and replayed
-multiple times, and because the energy overhead of replaying traces is
-minimal, we consider the high overhead for trace recording acceptable.
-
-Unlike trace collection, mocking trace replay requires platform support.
-\PocketMocker{} modifies the underlying smartphone platform to add an
-interface allowing it to inject mocked data. Once the user begins replaying
-the trace, \PocketMocker{} reads data from all sensor databases associated
-with the trace and uses this new interface to inject it into the platform.
-Any app requests for data contained in the mocking then return mocked data.
+relevant information and samples them aggressively, storing timestamped data in
+a set of local databases. Unlike trace collection, mocking trace replay
+requires platform support.  \PocketMocker{} modifies the underlying smartphone
+platform to add an interface allowing it to inject mocked data. Once the user
+begins replaying the trace, \PocketMocker{} reads data from all sensor
+databases associated with the trace and uses this new interface to inject it
+into the platform.  Any app requests for data contained in the mocking then
+return mocked data.
 
 \subsubsection{Initiating mocking sessions}
 
@@ -161,57 +139,33 @@ available network but tell apps that they are connected over the mocked Wifi
 network. At present \PocketMocker{} makes no attempt to alter connection
 properties such as latency or bandwidth of the real connection to match the
 mocked connection, and in some cases this is not possible. We leave dealing
-with attempts by suspicious apps to use these properties to pierce the
-mocking context as future work.
-
-A more difficult problem is providing a mocked connection when no real
-connection exists. Since this is impossible, \PocketMocker{} simply
-synchronizes this aspect of the mocking context with the real context and
-does not provide any mocked networking information while a real network is
-unavailable. While this creates variance in the mocking context, networks
-naturally go up and down and a user may have disabled the phone networking
-manually, meaning that lack of networking connectivity at a location where it
-is typically available cannot necessarily be interpreted by an app to mean
-that mocking is happening. Smartphone apps have to naturally handle this kind
-of variation in networking conditions due to mobility and changes in user
-configuration.
+with attempts by suspicious apps to use these properties to pierce the mocking
+context as future work. There is also the problem of providing a mocked
+connection when no real connection exists. Even though this is impossible to
+practically accomplish, we can synchronize with the real context have
+\PocketMocker{} simply return that there is no active data connection because
+networks naturally come and go, so this will not look suspicious to
+applications that are interested in circumventing the mocking context.
 
 \end{itemize}
 
-It is also important to point out things that \PocketMocker{} \textit{does
-not mock}, including user interaction, battery level, and the microphone
+It is also important to point out that \PocketMocker{} \textit{does
+not mock}: user interaction, battery level and the microphone
 readings. While mocking user interaction may be necessary to mislead certain
 types of apps, it is not necessary to mock the apps that \PocketMocker{}
 currently targets that collect and interpret data collected passively. More
 importantly, replaying interaction would prevent the user from using their
-smartphone while mocking was active.
-
-Replaying microphone readings represent a similar challenge since the
-microphone is used by the phone feature of the smartphone which we expect
-that users will not want to disable during mocking. Unfortunately, not
-replaying certain aspects of the audio environment may allow other apps to
-detect a different between the mocked context and the real context, such as a
-user claiming to be at a loud bar but actually still at their quiet home. We
-are planning to address this current limitation of \PocketMocker{} in the
-future, either by providing a pass-through for real context audio to apps
-where it represents input, or by merging audio recorded during replay with
-the audio from the mocking trace.
-
-Finally, if replayed battery levels would represent another continuity
-challenge similar to the spatial continuity challenge presented next. If
-\PocketMocker{} produced mocked battery readings during trace replay that
-represented the actual rate of battery usage during the trace, the system
-would be left with a discontinuity when the trace completed as the battery
-level would either have to abruptly increase or decrease to merge with the
-actual battery level. On the other hand, continuing to report actual battery
-levels during trace poses no threat to the mocking context and is actually
-more realistic, since the battery level will continue to track app usage of
-the device. For example, if the mocking trace was performed while no apps
-were rapidly using energy, and then apps did perform activities that led to
-heavy energy usage during replay, replaying the original battery drain would
-allow an observant app to identify a difference between the mocking and real
-contexts. Continuing to report actual battery levels is both easier and more
-correct.
+smartphone while mocking was active. Mocking battery levels represents another
+continuity challenge; at the time of entering or leaving the mocking context,
+the battery level will significantly increase or decrease to match the real or
+mocking context and apps can use this jump to detect a context switch has
+occurred, thus exposing a hole in the mocking context. Another problem with
+mocking battery levels is it creates a confusing user experience because the
+user then does not know the current status of the smartphone, which could have
+much harsher consequences, so \PocketMocker{} uses the real battery levels
+always. Like battery levels, microphone readings also represent a continuity
+challenge which leaves a hole in the mocking context and we plan on addressing
+this current limitation of \PocketMocker{} in the future.
 
 \subsubsection{Ensuring spatial continuity}
 
