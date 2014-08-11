@@ -12,16 +12,16 @@ whether it was achieved.
 
 \begin{figure*}[t]
 
-\begin{subfigure}[t]{2.33in}
-\includegraphics[width=2.33in]{./figures/apps/waze/waze1.png}
+\begin{subfigure}[t]{0.33\textwidth}
+\includegraphics[width=\textwidth]{./figures/apps/waze/waze1.png}
 \caption{}
 \end{subfigure}%
-\begin{subfigure}[t]{2.33in}
-\includegraphics[width=2.33in]{./figures/apps/waze/waze2.png}
+\begin{subfigure}[t]{0.33\textwidth}
+\includegraphics[width=\textwidth]{./figures/apps/waze/waze2.png}
 \caption{}
 \end{subfigure}%
-\begin{subfigure}[t]{2.33in}
-\includegraphics[width=2.33in]{./figures/apps/waze/waze3.png}
+\begin{subfigure}[t]{0.33\textwidth}
+\includegraphics[width=\textwidth]{./figures/apps/waze/waze3.png}
 \caption{}
 \end{subfigure}%
 
@@ -33,26 +33,27 @@ user is walking around.}
 \label{fig-mocking-waze}
 
 \end{figure*}
-
-\begin{table}
-\begin{tabularx}{3.33in}{lX}
+\begin{wraptable}{r}{0.6\textwidth}
+{\small
+\begin{tabularx}{0.6\textwidth}{lX}
 \textbf{App} & Waze Social Maps \& Traffic \\ \toprule
 \textbf{Installs} & 10--50~million \\
-\textbf{Mocking Objective} & Mock location \\ \midrule
+\textbf{Objective} & Mock location \\ \midrule
 \textbf{Trace Length} & 2 minutes 27 seconds \\
 \textbf{Trace Size} & 516~K \\
 \textbf{Location Mocks} & 117 \\
 \textbf{Sensors Used} & {\small GPS, Gyroscope, Accelerometer} \\
 \textbf{Sensor Mocks} & 2773 \\
-\textbf{Wifi Scan Mocks} & 115 \\
-\textbf{Cell Location Mocks} & 117 \\
+\textbf{Wifi Mocks} & 115 \\
+\textbf{Location Mocks} & 117 (Cell) \\
 \end{tabularx}
 
-\caption{\textbf{Mocking Waze.} Details of our Waze mocking trace.}
+\caption{\textbf{Details of Mocking Waze.}}
 
 \label{table-mocking-waze}
-
-\end{table}
+}
+\vspace*{-0.1in}
+\end{wraptable}
 
 As a first example of \PocketMocker{} in action, we mock the Waze maps
 app~\cite{waze-playstore-url}. Waze describes itself as a community-based
