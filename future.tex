@@ -12,17 +12,12 @@ by performing more validation of the information they receive from smartphone
 platforms. As described previously in Section~\ref{sec-implementation},
 because it is implemented at the platform layer our current prototype cannot
 defend against even simple attacks that bypass Android and read data directly
-from Linux. Our next step is develop a set of mocking patches allowing
-mocking to be implemented in Linux, which will address this issue.
-
-More work is needed, however, to determine the best approaches to preventing
-apps from observing differences between the mocked context and the real
-environment. As an example, while it is simple to make a faster network
-device (Wifi) look like a slower one (3G) through bandwidth throttling, the
-reverse is not possible. However, one approach may be to mock conditions
-associated with a congested or low-signal strength Wifi link when the real
-context is using 3G, or mislead the app into thinking that its bandwidth is
-being throttled by the Android platform.
+from Linux. Our next step is develop a set of mocking patches allowing mocking
+to be implemented in Linux, which will address this issue. More work is needed,
+however, to determine the best approaches to preventing apps from observing
+differences between the mocked context and the real environment; for example,
+mocking 3G network speeds when the user is really connected to a much faster
+home connection over WiFi. 
 
 \subsection{Per-App Mocking}
 
