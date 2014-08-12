@@ -44,39 +44,39 @@ work the task of exploring ways apps could attack the mocking context and
 effective \PocketMocker{} countermeasures, including moving mocking support
 into Linux itself. Our evaluation demonstrates that platform changes are
 sufficient to mock many different apps. Second, modifying Android reduced the
-developer effort needed to produce a working prototype allowing us to test
-and better understand the system.
+developer effort needed to produce a working prototype.
 
 % 02 Apr 2014 : GWA : NR TODO : Finish with specific details.
 
-The architecture of \PocketMocker{} consists of two phases, one sitting in the
-app layer and the other in the Android platform. We handle user 
-interaction, data logging, and data replaying in the app layer.
-In the platform, we have made modifications allowing \PocketMocker{} to notify 
-user-installed apps of location and sensory updates through their respective 
-callbacks.
+The architecture of \PocketMocker{} consists of two parts, one sitting in the
+app layer and the other in the Android platform. We handle user interaction,
+data logging, and data replaying in the app layer. In the platform, we have
+made modifications allowing \PocketMocker{} to notify user-installed apps of
+location and sensory updates through their respective callbacks.
 
-Users interact with the app itself, which allows for initiating the recording
-and replaying processes, and managing objectives. A user must create an
-objective before recording data; otherwise the system cannot associate a trace
-with a particular goal. During a recording session, we aggressively log device
-events to the application-layer database.  \PocketMocker{} registers a
-\texttt{LocationListener} with the \texttt{LocationManager} that records
-\texttt{onLocationChanged} at a rate of 1 \texttt{Location} per second---our
-listener also logs \texttt{onProviderDisabled}, \texttt{onProviderEnabled}, and
+\sloppypar{Users interact with the app itself, which allows for initiating
+the recording and replaying processes, and managing objectives. A user must
+create an objective before recording data; otherwise the system cannot
+associate a trace with a particular goal. During a recording session, we
+aggressively log device events to the application-layer database.
+\PocketMocker{} registers a \texttt{LocationListener} with the
+\texttt{LocationManager} that records \texttt{onLocationChanged} at a rate of
+1 \texttt{Location} per second---our listener also logs
+\texttt{onProviderDisabled}, \texttt{onProviderEnabled}, and
 \texttt{onStatusChanged} events. For each \texttt{onLocationChanged}, we also
 scan for nearby wireless acces points through the \texttt{WifiManager} and
 collect the \texttt{CellLocation} provided by the \texttt{TelephonyManager}.
-We also register a \texttt{SensorEventListener} with the \texttt{SensorManager}
-to collect sensor events---such as \texttt{onAccuracyChanged} and
-\texttt{onSensorChanged}---at a system-defined rate of
-\texttt{SENSOR\_DELAY\_GAME}, which is somewhere between 37--39 milliseconds.
-For all logged data, we serialize it into the database such that it can be
-reconstructed as a Java object later. \PocketMocker{}'s replay service is a
-background Android \texttt{Service} that manages platform clients and their
-respective publish-subscribe channels for replaying sensory data. When
-replaying data to the platform, we update timestamps on the objects to reflect
-current device time to naively secure the mocking context.
+We also register a \texttt{SensorEventListener} with the
+\texttt{SensorManager} to collect sensor events---such as
+\texttt{onAccuracyChanged} and \texttt{onSensorChanged}---at a system-defined
+rate of \texttt{SENSOR\_DELAY\_GAME}, which is somewhere between 37--39
+milliseconds. For all logged data, we serialize it into the database such
+that it can be reconstructed as a Java object later. \PocketMocker{}'s replay
+service is a background Android \texttt{Service} that manages platform
+clients and their respective publish-subscribe channels for replaying sensory
+data. When replaying data to the platform, we update timestamps on the
+objects to reflect current device time to naively secure the mocking
+context.}
 
 We have instrumented changes to the Android platform that allows each of the
 above managers to communicate with the \PocketMocker{} replay service. The

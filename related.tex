@@ -20,14 +20,13 @@ effective and user-friendly.
 \subsection{Mocking Approaches}
 
 AppFence~\cite{droids-ccs11} is one example that uses data shadowing,
-blocking, and mocking to selectively deny data to apps on a
-per-permission basis. When apps request data the user has chosen to
-deny them, such as their phone number or email address, empty or fixed bogus
-values are returned. MockDroid~\cite{mockdroid-hotmobile11} is another
-example of a similar system. Both these approaches focus on achieving privacy
-by limiting access to data, rather than achieving user objectives by
-manipulating data that apps do have access to, and we consider these efforts
-orthogonal to \PocketMocker{}.
+blocking, and mocking to selectively deny data to apps on a per-permission
+basis. When apps request data the user has chosen to deny them, such as their
+phone number or email address, empty or fixed bogus values are returned.
+MockDroid~\cite{mockdroid-hotmobile11} is another example of a similar
+system. Both these approaches focus on achieving privacy by limiting access
+to data, rather than achieving user objectives by manipulating data that apps
+do have access to, and we consider these efforts orthogonal.
 
 % 04 Apr 2014 : GWA : This is quite related... use the stuff from Taeyeon's
 % talk.
@@ -39,15 +38,15 @@ implementing objective-driven mocking on Android. Record and replay is not a
 new concept in general, but there has recently been a focus on instrumenting
 this type of procedure on mobile devices~\cite{recordreplay-hotmobile11}.
 There are a few systems in existence, but the majority of research efforts
-for this type of system seems to be focused on developer testing and
-app performance. For instance, there is RERAN~\cite{gomez2013reran},
-which captures input events at the filesystem level for later programmatic
-replay; another example of such a testing system is
+for this type of system seems to be focused on developer testing and app
+performance. For instance, there is RERAN~\cite{gomez2013reran}, which
+captures input events at the filesystem level for later programmatic replay;
+another example of such a testing system is
 VanarSera~\cite{vanarsena-mobisys14}, which records event data then
 distributes it to multiple ``monkeys'' or slave devices for parallel testing;
 there is also AppInsight~\cite{appinsight-osdi12}, an app-layer
-instrumentation that helps identify critical paths in user transactions on a
-per-app basis. Despite this focus, there is interest in using record and
+instrumentation that helps identify critical paths in per-app user
+transactions. Despite this focus, there is interest in using record and
 replay systems to bring permission issues to light~\cite{permissions-spsm12}.
 
 % 02 Apr 2014 : GWA : Cover some attempts to improve Android's permission

@@ -1,6 +1,6 @@
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{./figures/architecture.pdf}
+\includegraphics[width=0.8\textwidth]{./figures/architecture.pdf}
 
 \caption{\textbf{\PocketMocker{} Design.} Details are specific to Android but
 would be similar on other platforms.}
@@ -14,10 +14,10 @@ would be similar on other platforms.}
 
 This section describes the design of the \PocketMocker{} objective-driven
 context mocking system. We begin by developing a set of design requirements
-based on the mocking scenarios and taxonomy presented previously, and also
-outline the challenges of effective context mocking. We then describe how
-\PocketMocker{} uses changes to the smartphone platform and a dedicated app
-to perform context mocking.
+based on the mocking scenarios and taxonomy presented previously and outline
+the challenges of effective mocking. We then describe how \PocketMocker{}
+uses changes to the smartphone platform and a dedicated app to perform
+context mocking.
 
 \subsection{Overview}
 
@@ -54,7 +54,7 @@ deployed as needed to achieve the user's mocking objective. We describe how
 \PocketMocker{} accomplishes these tasks and overcomes two consistency
 challenges below.
 
-\subsubsection{Linking mocking traces and objectives}
+\subsubsection{Linking mocking traces and objectives:\space}
 
 To begin, \PocketMocker{} must be able to link mocking traces with
 user-defined objectives, so that it knows what trace will achieve each
@@ -69,7 +69,7 @@ provides a library of objectives (''appear more fit'') and associated
 suggestions for mocking traces (''take a walk''). We also expect users will
 be well-served by their own intuition.
 
-\subsubsection{Collecting, storing, and replaying traces}
+\subsubsection{Collecting, storing, and replaying traces:\space}
 
 Second, \PocketMocker{} must be able to collect, store and replay mocking
 traces. Trace collection is currently initiated by the \PocketMocker{} app and
@@ -85,13 +85,13 @@ databases associated with the trace and uses this new interface to inject it
 into the platform.  Any app requests for data contained in the mocking then
 return mocked data.
 
-\subsubsection{Initiating mocking sessions}
+\subsubsection{Initiating mocking sessions:\space}
 
 Third, \PocketMocker{}'s app helps the user remember to initiate mocking
 sessions. Each recorded trace can be annotated with a frequency which
 \PocketMocker{} uses to help prompt the user to deploy the trace. For
-example, Bob may want to go for a walk once every day, and by annotating the
-trace with his goal \PocketMocker{} knows when to provide reminders.
+example, Bob may want to go for a walk daily, and by annotating the trace
+with his goal \PocketMocker{} knows when to provide reminders.
 
 \subsection{Consistency Challenges}
 
@@ -107,7 +107,7 @@ how \PocketMocker{} masks differences between the mocking context and the
 real context. Second, we address spatial continuity, a specific consistency
 problem facing the \PocketMocker{} system.
 
-\subsubsection{Differences with the mocking context}
+\subsubsection{Differences with the mocking context:\space}
 
 Here we examine specific differences between the mocking context and the real
 context and address how \PocketMocker{} deals with each case:
@@ -145,7 +145,7 @@ connection when no real connection exists. Even though this is impossible to
 practically accomplish, we can synchronize with the real context have
 \PocketMocker{} simply return that there is no active data connection because
 networks naturally come and go, so this will not look suspicious to
-applications that are interested in circumventing the mocking context.
+applications that attempt to circumvent the mocking context.
 
 \end{itemize}
 
@@ -167,7 +167,7 @@ always. Like battery levels, microphone readings also represent a continuity
 challenge which leaves a hole in the mocking context and we plan on addressing
 this current limitation of \PocketMocker{} in the future.
 
-\subsubsection{Ensuring spatial continuity}
+\subsubsection{Ensuring spatial continuity:\space}
 
 Given that smartphones can and do track their users location, and that this
 information reveals a great deal about their lives, \PocketMocker{} is
@@ -182,14 +182,14 @@ apps and not addressing all attacks apps could perform on the mocking
 context, sudden changes in location are both an all-too-obvious indication of
 mocking and might also cause some apps to malfunction.
 
-Currently, \PocketMocker{} works around this challenge by interacting with the
-user. While a mocking trace is being replayed, a notification is displayed
-informing the user of the time left before the mocking process completes and
-the distance from the user to the location where the trace ends. Once the
-trace ends, if the user's location is close to where the trace completes
-\PocketMocker{} will simply allow the trace to end normally and merge the
-real and mocking context. If the user is not close to where the trace
-completes, \PocketMocker{} generates an notification asking the user to
+Currently, \PocketMocker{} works around this challenge by interacting with
+the user. While a mocking trace is being replayed, a notification is
+displayed informing the user of the time left before the mocking process
+completes and the distance from the user to the location where the trace
+ends. Once the trace ends, if the user's location is close to where the trace
+completes \PocketMocker{} will simply allow the trace to end normally and
+merge the real and mocking context. If the user is not close to where the
+trace completes, \PocketMocker{} generates an notification asking the user to
 either reach the correct location or allow the spatial discontinuity. Until
 the user responds to the dialog or reaches the required location,
 \PocketMocker{} continues to mock them at the mocking traces final location,
@@ -197,7 +197,7 @@ using the lingering capability described next. This also allows
 \PocketMocker{} to perform backward time shifting on an existing trace. In
 Jerry's example, when it is time to return home he initiates a pre-recorded
 trace of his return. Once his trace reaches home, it will linger there until
-he arrives at some later time.
+he arrives.
 
 \subsection{Lingering}
 
@@ -216,8 +216,8 @@ location and then replays it repeatedly. To make the data delivered to apps
 during the lingering process more realistic, and prevent apps from detecting
 the mocking process by observing repeated readings, \PocketMocker{} injects
 noise into the data returned during the lingering session, performing small
-changes to the reported location, sensor readings, Wifi scan results, and
-network signal strengths.
+changes to the reported location, sensor readings, scan results, and signal
+strengths.
 
 To time-extend a trace, the app allows users to indicate linger points during
 trace recording. During replay, once the trace reaches a linger point
@@ -227,8 +227,8 @@ to proceed past the linger point she inserted into her trace of visiting the
 healthy restaurant. To conceal an undesirable activity, the \PocketMocker{}
 app allows lingering to be initiated at any time. A small amount of context
 is recorded and then replayed until the lingering session is canceled. So
-Carol can initiate the lingering session at work, and then bring her phone
-with her to her coffee break while appearing to remain at work.
+Carol can initiate the lingering session at work, and then bring her phone to
+her coffee break while appearing to remain at work.
 
 Forward-shifting a trace is a three-step process. First, \PocketMocker{}
 collects a small amount of context at the current location in order to linger

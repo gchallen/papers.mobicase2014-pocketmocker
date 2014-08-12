@@ -1,14 +1,12 @@
 \section{Evaluation}
 \label{sec-evaluation}
-\subsection{\PocketMocker{} Can Mock Smartphone Apps}
-\label{subsec-mockingapps}
 
 We continue by demonstrating that our \PocketMocker{} prototype works by using
 it to mock three smartphone apps. In each case we describe the app, discuss why
 users might want to mock it, describe our specific mocking objective and
 whether it was achieved.
 
-\subsubsection{Mocking Maps}
+\subsection{Mocking Maps}
 
 \begin{figure*}[t]
 
@@ -30,11 +28,29 @@ successfully able to mock the Waze maps app. As the mocking trace is
 replayed, the phone remains stationary on the desk, but Waze thinks that the
 user is walking around.}
 
+\vspace*{0.1in}
+\hrule
+\vspace*{-0.15in}
+
 \label{fig-mocking-waze}
 
 \end{figure*}
 
+As a first example of \PocketMocker{} in action, we mock the Waze maps
+app~\cite{waze-playstore-url}. Waze describes itself as a community-based
+traffic and navigation app allowing ``millions of drivers from across the
+globe joining forces to outsmart traffic, save time, gas money, and improve
+daily commuting for all''.
+
+Our objective in mocking Waze was to show that \PocketMocker{} can provide
+fine-grained location to the many smartphone apps that use location to
+customize the user experience. Given the amount of information smartphone
+users' location can reveal about them, it is important for \PocketMocker{} to
+effectively support location mocking. In our next mocking example we show the
+effect that mocked locations can have on an unsuspecting app.
+
 \begin{wraptable}{r}{0.6\textwidth}
+\vspace*{-0.2in}
 {\small
 \begin{tabularx}{0.6\textwidth}{lX}
 \textbf{App} & Waze Social Maps \& Traffic \\ \toprule
@@ -53,21 +69,9 @@ user is walking around.}
 
 \label{table-mocking-waze}
 }
-\vspace*{-0.1in}
+\vspace*{-0.2in}
 \end{wraptable}
 
-As a first example of \PocketMocker{} in action, we mock the Waze maps
-app~\cite{waze-playstore-url}. Waze describes itself as a community-based
-traffic and navigation app allowing ``millions of drivers from across the
-globe joining forces to outsmart traffic, save time, gas money, and improve
-daily commuting for all''.
-
-Our objective in mocking Waze was to show that \PocketMocker{} can provide
-fine-grained location to the many smartphone apps that use location to
-customize the user experience. Given the amount of information smartphone
-users' location can reveal about them, it is important for \PocketMocker{} to
-effectively support location mocking. In our next mocking example we show the
-effect that mocked locations can have on an unsuspecting app.
 
 To mock Waze, We first recorded a mocking trace of a walk around campus,
 described in more detail in Table~\ref{table-mocking-waze}.  This included
@@ -80,7 +84,7 @@ the smartphone not moving. An anonymized video of our successful Waze mocking
 session is also available at
 \hyperlink{http://youtu.be/GIqXP6b769c}{\texttt{http://youtu.be/GIqXP6b769c}}.
 
-\subsubsection{Mocking checkins}
+\subsection{Mocking Checkins}
 
 As an example of a more realistic mocking scenario, we used \PocketMocker{}
 to mock the popular Facebook app~\cite{facebook-playstore-url}. Facebook is
@@ -97,6 +101,7 @@ visits the website, or it could be reputation-related as a user may want to
 appear more social than he or she really is.
 
 \begin{wraptable}{r}{0.6\textwidth}
+\vspace*{-0.3in}
 {\small
 \begin{tabularx}{0.6\textwidth}{lX}
 \textbf{App} & Facebook \\ \toprule
@@ -113,6 +118,7 @@ appear more social than he or she really is.
 \end{tabularx}
 
 \caption{\textbf{Details of Mocking Facebook.}}
+\vspace*{-0.2in}
 
 \label{table-mocking-facebook}
 }
@@ -147,14 +153,18 @@ sufficiently.
 \end{subfigure}
 
 \caption{\textbf{Mocking Facebook.} The screenshots show that we were able to
-mock the Facebook app and initiate a check-in at Starbucks despite being a
-half-mile away.}
+mock the Facebook app and initiate a check-in at Starbucks from a half-mile
+away.}
+
+\vspace*{0.1in}
+\hrule
+\vspace*{-0.15in}
 
 \label{fig-mocking-facebook}
 
 \end{figure*}
 
-\subsubsection{Mocking a game}
+\subsection{Mocking a Game}
 
 As a final mocking challenge, we attempted to use \PocketMocker{} to mock an
 accelerometer-driven game. Fast Racing 3D is a car racing game available for
@@ -175,6 +185,7 @@ reputation through repetition when using apps that post scores to a public
 leaderboard.
 
 \begin{wraptable}{r}{0.6\textwidth}
+\vspace*{-0.1in}
 {\small
 \begin{tabularx}{0.6\textwidth}{lX}
 \textbf{App} & Fast Racing 3D \\ \toprule
@@ -189,9 +200,10 @@ leaderboard.
 \textbf{Location Mocks} & 96 (Cell) \\
 \end{tabularx}
 
-\caption{\textbf{Details of Mocking Waze.}}
+\caption{\textbf{Details of Mocking Fast Racing.}}
+\vspace*{-0.1in}
 
-\label{table-mocking-waze}
+\label{table-mocking-fastracing}
 }
 \vspace*{-0.1in}
 \end{wraptable}
@@ -226,8 +238,11 @@ Fast Racing mocking session is also available at
 \end{subfigure}
 
 \caption{\textbf{Mocking Fast Racing.} The screenshots show that we were able
-  to mock the accelerometer-driven Fast Racing game to control the vehicle
-during the mocking session.}
+to mock the accelerometer-driven Fast Racing game.}
+
+\vspace*{0.1in}
+\hrule
+\vspace*{-0.15in}
 
 \label{fig-mocking-game}
 
