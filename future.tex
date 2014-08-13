@@ -4,80 +4,48 @@
 By enabling objective-driven context mocking, \PocketMocker{} opens up many
 new directions for future work.
 
-\subsection{Securing the Mocking Context}
+\subsection{Improving security and user experience}
 
 While we have demonstrated that \PocketMocker{} can effectively mock
-unsuspecting smartphone apps, future apps may attempt to defeat user mocking
-by performing more validation of the information they receive from smartphone
-platforms. As described previously in Section~\ref{sec-implementation},
-because it is implemented at the platform layer our current prototype cannot
-defend against even simple attacks that bypass Android and read data directly
-from Linux. Our next step is develop a set of mocking patches allowing mocking
-to be implemented in Linux, which will address this issue. More work is needed,
-however, to determine the best approaches to preventing apps from observing
-differences between the mocked context and the real environment; for example,
-mocking 3G network speeds when the user is really connected to a much faster
-home connection over WiFi. 
+unsuspecting smartphone apps, its security and user experience can still be
+further improved. Because of its implementation at the platform-level, there
+are possibilities for apps to know when they are being mocked. For example,
+they can read data directly from the kernel instead of calling through the
+Android platform. Our next step is to better protect \PocketMocker{} by making
+changes at the kernel level. Another flaw with the current prototype is that
+mocking happens globally, meaning all user-installed apps are mocked when
+replaying mocked data. This can cause a problem if a user wants to use a
+user-installed navigator, but still want to mock another app while driving. We
+are working towards user-specified app mocking, so only apps selected by the
+user are mocked.
 
-\subsection{Per-App Mocking}
-
-At the moment \PocketMocker{} feeds mocked data to all apps, which can create
-undesirable consequences in certain cases. As an example, if a user wants to
-perform mocking but also use their smartphone for navigation during the
-mocking session, this is currently impossible since the navigation app will
-be receiving incorrect locations from \PocketMocker{}. We are working on
-improving the platform support \PocketMocker{} requires to allow
-user-specified apps to pierce the mocking context and receive real data. Once
-able to perform mocking on a per-app basis, \PocketMocker{} could mock
-several apps simultaneously using different mocking traces designed to
-achieve different objectives.
-
-\subsection{White Hat Data Analytics}
+\subsection{White hat data analytics}
 
 Currently the process of linking user objectives with mocking traces is
 qualitative in nature: \PocketMocker{} can suggest that a user interested in
-seeming more fit take a walk. To make this process more quantitative, we are
-augmenting \PocketMocker{} with a library of data analysis algorithms that
-attempt to replicate the approaches taken by companies mining data, such as
-location traces, provided by smartphone apps. We refer to these
-open-source algorithms as \textit{white hat data analytics}, reflecting their
-intention to help individual users in the name of privacy, rather than
-companies in the name of profit. Running these algorithms on the phone,
-rather than in the cloud, preserves users' privacy. White hat data analytics
-will play two roles in future versions of \PocketMocker{}. First, they will
-reveal to users what their smartphone data might reveal about them helping
-them choose what attributes to mock. Second, they provide a way of
-quantitative evaluating mocking traces, allowing Bob to measure the impact
-his walk will have on his activity level and compare it with, for example, a
-bike ride.
+seeming more fit take a walk. We want to be able to provide users quantitative
+information as well, such as how apps are using their behavioral data to
+classify them. We will be augmenting \PocketMocker{} with a library of
+open-source data analysis algorithms, so users can see how their data might be
+used to determine who they are. These open-source algorithms---or \textit{white
+hat data analytics}---can also be used to help a user find out how well their
+mocking traces are working.
 
-\subsection{Mocking Libraries and Synthesis}
+\subsection{Sharing mocking traces}
 
-Mocking performed by \PocketMocker{} is currently limited to repeating
-actions that the user has previously recorded. While this is a powerful
-primitive, it is also limited, including in ways that complicate
-\PocketMocker{}'s task of preserving spatial continuity as described
-previously. However, as the size of \PocketMocker{}'s trace library grows it
-becomes more likely that our system \textit{can} synthesize new mocking
-activities by combining parts of earlier traces. Future versions of
-\PocketMocker{} will facilitate this process by performing location-driven
-and battery-permitting background recording of context traces as users go
-about their daily lives. It is also possible that \PocketMocker{} could
-eventually draw on shared libraries of context information to synthesize
-activities even falling outside of a user's own library. If another
-\PocketMocker{} user has mapped the walking paths, Wifi locations, visible
-cell towers, and other shared context information at a particular location,
-then \PocketMocker{} may be able to merge that data into an individual trace
-of a user walking to allow them to take a walk in a place they have never
-visited.
+\PocketMocker{} is also limited by the device owner's previously recorded
+actions. While this is a powerful primitive, it is also limited, including in
+ways that complicate \PocketMocker{}'s task of preserving spatial continuity as
+described previously. We can grow their dataset in the background as they go
+about their daily routine by performing location-driven and battery-permitting
+recordings. There is also potential for users to share mocking traces, which
+would allow users to replay activity that they never performed, thus providing
+them even more options to shape their digital identity.
 
-\subsection{Mock to Test}
+\subsection{Mocking to test}
 
-Finally, we also note that mocking traces may also be valuable to smartphone
-developers interested in testing how their app performs under varying
-conditions. By adding support to the Android emulator for reading mocking
-traces, the user of a new mapping client could experience exactly how their
-app would perform for another user navigating the streets of a city far away.
-This feature is similar to Android's current ability to allow apps to use
-mocked locations, but by also mocking all other location-varying aspects of
-the device's context \PocketMocker{} would provide more realism.
+Finally, mocking can be used as a developer tool. By adding mocking support to
+Android, developers can test in a far more realistic way than ever before. For
+example, a developer building a new navigator would be able to provide all
+required sensor data and see how the app performs with real data while still
+sitting at a desk.
