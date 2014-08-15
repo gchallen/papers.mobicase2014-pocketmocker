@@ -1,4 +1,4 @@
-START = noxxxnote draft blue
+START = noxxxnote nodraft noblue
 END = missing
 
 all: paper ABSTRACT
