@@ -64,7 +64,7 @@ process has both a qualitative and quantitative component. Qualitatively,
 \PocketMocker{} may suggest activities that would naturally be linked with a
 specific objective. If Bob wants to be more active, he should take a walk. If
 Alice wants to appear more healthy, she should eat at a healthy
-restaurant---and not eat at the fast-food restaurant. \PocketMocker{}'s app
+restaurant---and not eat at the burger joint. \PocketMocker{}'s app
 provides a library of objectives (''appear more fit'') and associated
 suggestions for mocking traces (''take a walk''). We also expect users will
 be well-served by their own intuition.
@@ -104,7 +104,7 @@ context is consistent and does not create obvious problems or physical
 impossibilities that could either break app functionality or send an
 unmistakable signal that something unusual is happening. First, we look at
 how \PocketMocker{} masks differences between the mocking context and the
-real context. Second, we address spatial continuity, a specific consistency
+real context. Then, we address spatial continuity, a specific consistency
 problem facing the \PocketMocker{} system.
 
 \subsubsection{Differences with the mocking context:\space}
@@ -124,7 +124,7 @@ location.
 
 \item \textbf{Device configuration:} \uline{the accelerometer was not used
 during the mocking context but is enabled by an app in the real context.}
-Here \PocketMocker{} exploits the fact that it records all information about
+Here, \PocketMocker{} exploits the fact that it records all information about
 the smartphone while recording the mocking trace, meaning that it can handle
 requests to use any device feature during replay.
 
@@ -169,7 +169,7 @@ this current limitation of \PocketMocker{} in the future.
 
 \subsubsection{Ensuring spatial continuity:\space}
 
-Given that smartphones can and do track their users location, and that this
+Given that smartphones can and do track their users' location, and that this
 information reveals a great deal about their lives, \PocketMocker{} is
 designed to allow mocking location and user movement. However, this creates a
 continuity challenge when the mocking trace ends at a different place from

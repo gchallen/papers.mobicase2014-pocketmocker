@@ -100,6 +100,11 @@ health-related, like our Alice, so different ads are displayed when the user
 visits the website, or it could be reputation-related as a user may want to
 appear more social than he or she really is.
 
+To mock a Facebook check-in, we recorded a mocking trace of a walk to the
+nearby Starbucks, which included location, connectivity, and sensor data from
+the accelerometer. Because the trace was collected outdoors, no Wifi scan
+data was captured. We then placed the smartphone on a desk, initiated a
+replay session and launched the Facebook app.
 \begin{wraptable}{r}{0.6\textwidth}
 \vspace*{-0.3in}
 {\small
@@ -124,12 +129,6 @@ appear more social than he or she really is.
 }
 \vspace*{-0.1in}
 \end{wraptable}
-
-To mock a Facebook check-in, we recorded a mocking trace of a walk to the
-nearby Starbucks, which included location, connectivity, and sensor data from
-the accelerometer. Because the trace was collected outdoors, no Wifi scan
-data was captured. We then placed the smartphone on a desk, initiated a
-replay session and launched the Facebook app.
 Figure~\ref{fig-mocking-facebook} shows three screenshows of Facebook being
 mocked demonstrating that Facebook did allow us to check in at Starbucks at
 the end of the trace despite the smartphone not being located nearby. We did
