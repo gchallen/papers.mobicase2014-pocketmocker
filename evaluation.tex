@@ -49,29 +49,28 @@ users' location can reveal about them, it is important for \PocketMocker{} to
 effectively support location mocking. In our next mocking example we show the
 effect that mocked locations can have on an unsuspecting app.
 
-\begin{wraptable}{r}{0.6\textwidth}
-\vspace*{-0.2in}
-{\small
-\begin{tabularx}{0.6\textwidth}{lX}
+\begin{table}
+\begin{tabularx}{3.33in}{lX}
 \textbf{App} & Waze Social Maps \& Traffic \\ \toprule
 \textbf{Installs} & 10--50~million \\
-\textbf{Objective} & Mock location \\ \midrule
+\textbf{Mocking Objective} & Mock location \\ \midrule
 \textbf{Trace Length} & 2 minutes 27 seconds \\
 \textbf{Trace Size} & 516~K \\
 \textbf{Location Mocks} & 117 \\
 \textbf{Sensors Used} & {\small GPS, Gyroscope, Accelerometer} \\
 \textbf{Sensor Mocks} & 2773 \\
-\textbf{Wifi Mocks} & 115 \\
-\textbf{Location Mocks} & 117 (Cell) \\
+\textbf{Wifi Scan Mocks} & 115 \\
+\textbf{Cell Location Mocks} & 117 \\
+\textbf{Video URL} &
+\hyperlink{http://youtu.be/GIqXP6b769c}{\texttt{http://youtu.be/GIqXP6b769c}} \\
+
 \end{tabularx}
 
-\caption{\textbf{Details of Mocking Waze.}}
+\caption{\textbf{Mocking Waze.} Details of our Waze mocking trace.}
 
 \label{table-mocking-waze}
-}
-\vspace*{-0.2in}
-\end{wraptable}
 
+\end{table}
 
 To mock Waze, We first recorded a mocking trace of a walk around campus,
 described in more detail in Table~\ref{table-mocking-waze}.  This included
@@ -105,30 +104,30 @@ nearby Starbucks, which included location, connectivity, and sensor data from
 the accelerometer. Because the trace was collected outdoors, no Wifi scan
 data was captured. We then placed the smartphone on a desk, initiated a
 replay session and launched the Facebook app.
-\begin{wraptable}{r}{0.6\textwidth}
-\vspace*{-0.3in}
-{\small
-\begin{tabularx}{0.6\textwidth}{lX}
+
+\begin{table}[t]
+\begin{tabularx}{3.33in}{lX}
 \textbf{App} & Facebook \\ \toprule
 \textbf{Installs} & 500--1,000~million \\
-\textbf{Objective} & Check-in at mocked location. \\
+\textbf{Mocking Objective} & Check-in at mocked location. \\
   \midrule
 \textbf{Trace Length} & 1 minute 37 seconds \\
 \textbf{Trace Size} & 268~K \\
 \textbf{Location Mocks} & 106 \\
-\textbf{Sensors Used} & {\small GPS, Accelerometer} \\
+\textbf{Uses Sensors} & GPS, Accelerometer \\
 \textbf{Sensor Mocks} & 2569 \\
-\textbf{Wifi Mocks} & 0 \\
-\textbf{Location Mocks} & 97 (Cell) \\
+\textbf{Wifi Scan Mocks} & 0 \\
+\textbf{Cell Location Mocks} & 97 \\
+\textbf{Video URL} & (Removed for blind review.) \\
+
 \end{tabularx}
 
-\caption{\textbf{Details of Mocking Facebook.}}
-\vspace*{-0.2in}
+\caption{\textbf{Mocking Facebook.} Details of our Facebook mocking trace.}
 
 \label{table-mocking-facebook}
-}
-\vspace*{-0.1in}
-\end{wraptable}
+
+\end{table}
+
 Figure~\ref{fig-mocking-facebook} shows three screenshows of Facebook being
 mocked demonstrating that Facebook did allow us to check in at Starbucks at
 the end of the trace despite the smartphone not being located nearby. We did
@@ -183,29 +182,32 @@ to begin again after failing more difficult challenges, or to improve their
 reputation through repetition when using apps that post scores to a public
 leaderboard.
 
-\begin{wraptable}{r}{0.6\textwidth}
-\vspace*{-0.1in}
-{\small
-\begin{tabularx}{0.6\textwidth}{lX}
+\begin{table}[t]
+
+\begin{tabularx}{3.33in}{lX}
 \textbf{App} & Fast Racing 3D \\ \toprule
-\textbf{Installs} & 10--50~million \\
-\textbf{Objective} & Control game play \\ \midrule
+\textbf{Installs} & 50--100~million \\
+  \textbf{Mocking Objective} & Control game play \\ \midrule
+\textbf{Uses Sensors} & Accelerometer \\
 \textbf{Trace Length} & 1 minute 35 seconds \\
 \textbf{Trace Size} & 296~K \\
 \textbf{Location Mocks} & 96 \\
-\textbf{Sensors Used} & {\small GPS, Accelerometer} \\
+\textbf{Uses Sensors} & GPS, Accelerometer \\
 \textbf{Sensor Mocks} & 1363 \\
-\textbf{Wifi Mocks} & 96 \\
-\textbf{Location Mocks} & 96 (Cell) \\
+\textbf{Wifi Scan Mocks} & 96 \\
+\textbf{Cell Location Mocks} & 96 \\
+\textbf{Video URL} &
+  \hyperlink{http://youtu.be/8fAj5dYFwS0}{\texttt{http://youtu.be/8fAj5dYFwS0}}
+  \\
+
 \end{tabularx}
 
-\caption{\textbf{Details of Mocking Fast Racing.}}
-\vspace*{-0.1in}
+\caption{\textbf{Mocking Fast Racing.} Details of our Fast Racing
+  mocking trace.}
 
-\label{table-mocking-fastracing}
-}
-\vspace*{-0.1in}
-\end{wraptable}
+\label{table-mocking-game}
+\vspace*{-0.2in}
+\end{table}
 
 To mock Fast Racing gameplay we recorded a mocking trace of a portion of a
 trip through one of the game's race courses.  This included tracking location,
