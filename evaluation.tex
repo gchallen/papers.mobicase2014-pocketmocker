@@ -49,6 +49,17 @@ users' location can reveal about them, it is important for \PocketMocker{} to
 effectively support location mocking. In our next mocking example we show the
 effect that mocked locations can have on an unsuspecting app.
 
+To mock Waze, We first recorded a mocking trace of a walk around campus,
+described in more detail in Table~\ref{table-mocking-waze}.  This included
+tracking location, connectivity, and sensor data from the gyroscope and
+accelerometer that Waze utilizes. We then placed the smartphone on a desk,
+initiated a replay session and launched the Waze app.
+Figure~\ref{fig-mocking-waze} shows three screenshots of Waze being mocked,
+showing that the users location is being updated to follow the trace despite
+the smartphone not moving. An anonymized video of our successful Waze mocking
+session is also available at
+\hyperlink{http://youtu.be/GIqXP6b769c}{\texttt{http://youtu.be/GIqXP6b769c}}.
+
 \begin{table}
 \begin{tabularx}{3.33in}{lX}
 \textbf{App} & Waze Social Maps \& Traffic \\ \toprule
@@ -72,17 +83,6 @@ effect that mocked locations can have on an unsuspecting app.
 
 \end{table}
 
-To mock Waze, We first recorded a mocking trace of a walk around campus,
-described in more detail in Table~\ref{table-mocking-waze}.  This included
-tracking location, connectivity, and sensor data from the gyroscope and
-accelerometer that Waze utilizes. We then placed the smartphone on a desk,
-initiated a replay session and launched the Waze app.
-Figure~\ref{fig-mocking-waze} shows three screenshots of Waze being mocked,
-showing that the users location is being updated to follow the trace despite
-the smartphone not moving. An anonymized video of our successful Waze mocking
-session is also available at
-\hyperlink{http://youtu.be/GIqXP6b769c}{\texttt{http://youtu.be/GIqXP6b769c}}.
-
 \subsection{Mocking Checkins}
 
 As an example of a more realistic mocking scenario, we used \PocketMocker{}
@@ -104,29 +104,6 @@ nearby Starbucks, which included location, connectivity, and sensor data from
 the accelerometer. Because the trace was collected outdoors, no Wifi scan
 data was captured. We then placed the smartphone on a desk, initiated a
 replay session and launched the Facebook app.
-
-\begin{table}[t]
-\begin{tabularx}{3.33in}{lX}
-\textbf{App} & Facebook \\ \toprule
-\textbf{Installs} & 500--1,000~million \\
-\textbf{Mocking Objective} & Check-in at mocked location. \\
-  \midrule
-\textbf{Trace Length} & 1 minute 37 seconds \\
-\textbf{Trace Size} & 268~K \\
-\textbf{Location Mocks} & 106 \\
-\textbf{Uses Sensors} & GPS, Accelerometer \\
-\textbf{Sensor Mocks} & 2569 \\
-\textbf{Wifi Scan Mocks} & 0 \\
-\textbf{Cell Location Mocks} & 97 \\
-\textbf{Video URL} & (Removed for blind review.) \\
-
-\end{tabularx}
-
-\caption{\textbf{Mocking Facebook.} Details of our Facebook mocking trace.}
-
-\label{table-mocking-facebook}
-
-\end{table}
 
 Figure~\ref{fig-mocking-facebook} shows three screenshows of Facebook being
 mocked demonstrating that Facebook did allow us to check in at Starbucks at
@@ -162,6 +139,30 @@ away.}
 
 \end{figure*}
 
+\begin{table}[t]
+\begin{tabularx}{3.33in}{lX}
+\textbf{App} & Facebook \\ \toprule
+\textbf{Installs} & 500--1,000~million \\
+\textbf{Mocking Objective} & Check-in at mocked location. \\
+  \midrule
+\textbf{Trace Length} & 1 minute 37 seconds \\
+\textbf{Trace Size} & 268~K \\
+\textbf{Location Mocks} & 106 \\
+\textbf{Uses Sensors} & GPS, Accelerometer \\
+\textbf{Sensor Mocks} & 2569 \\
+\textbf{Wifi Scan Mocks} & 0 \\
+\textbf{Cell Location Mocks} & 97 \\
+\textbf{Video URL} & 
+\hyperlink{http://youtu.be/R8L6OV8hY2k}{\texttt{http://youtu.be/R8L6OV8hY2k}} \\
+
+\end{tabularx}
+
+\caption{\textbf{Mocking Facebook.} Details of our Facebook mocking trace.}
+
+\label{table-mocking-facebook}
+
+\end{table}
+
 \subsection{Mocking a Game}
 
 As a final mocking challenge, we attempted to use \PocketMocker{} to mock an
@@ -181,33 +182,6 @@ reasons: to avoid tedious replay of easier levels on apps that force players
 to begin again after failing more difficult challenges, or to improve their
 reputation through repetition when using apps that post scores to a public
 leaderboard.
-
-\begin{table}[t]
-
-\begin{tabularx}{3.33in}{lX}
-\textbf{App} & Fast Racing 3D \\ \toprule
-\textbf{Installs} & 50--100~million \\
-  \textbf{Mocking Objective} & Control game play \\ \midrule
-\textbf{Uses Sensors} & Accelerometer \\
-\textbf{Trace Length} & 1 minute 35 seconds \\
-\textbf{Trace Size} & 296~K \\
-\textbf{Location Mocks} & 96 \\
-\textbf{Uses Sensors} & GPS, Accelerometer \\
-\textbf{Sensor Mocks} & 1363 \\
-\textbf{Wifi Scan Mocks} & 96 \\
-\textbf{Cell Location Mocks} & 96 \\
-\textbf{Video URL} &
-  \hyperlink{http://youtu.be/8fAj5dYFwS0}{\texttt{http://youtu.be/8fAj5dYFwS0}}
-  \\
-
-\end{tabularx}
-
-\caption{\textbf{Mocking Fast Racing.} Details of our Fast Racing
-  mocking trace.}
-
-\label{table-mocking-game}
-\vspace*{-0.2in}
-\end{table}
 
 To mock Fast Racing gameplay we recorded a mocking trace of a portion of a
 trip through one of the game's race courses.  This included tracking location,
@@ -248,6 +222,34 @@ to mock the accelerometer-driven Fast Racing game.}
 \label{fig-mocking-game}
 
 \end{figure*}
+
+\begin{table}[t]
+
+\begin{tabularx}{3.33in}{lX}
+\textbf{App} & Fast Racing 3D \\ \toprule
+\textbf{Installs} & 50--100~million \\
+  \textbf{Mocking Objective} & Control game play \\ \midrule
+\textbf{Uses Sensors} & Accelerometer \\
+\textbf{Trace Length} & 1 minute 35 seconds \\
+\textbf{Trace Size} & 296~K \\
+\textbf{Location Mocks} & 96 \\
+\textbf{Uses Sensors} & GPS, Accelerometer \\
+\textbf{Sensor Mocks} & 1363 \\
+\textbf{Wifi Scan Mocks} & 96 \\
+\textbf{Cell Location Mocks} & 96 \\
+\textbf{Video URL} &
+  \hyperlink{http://youtu.be/8fAj5dYFwS0}{\texttt{http://youtu.be/8fAj5dYFwS0}}
+  \\
+
+\end{tabularx}
+
+\caption{\textbf{Mocking Fast Racing.} Details of our Fast Racing
+  mocking trace.}
+
+\label{table-mocking-game}
+\vspace*{-0.2in}
+\end{table}
+
 
 \subsection{Users Can Use \PocketMocker{}}
 \label{subsec-usability}

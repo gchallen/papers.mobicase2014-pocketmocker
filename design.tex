@@ -1,6 +1,6 @@
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.5\textwidth]{./figures/architecture.pdf}
+\includegraphics[width=0.45\textwidth]{./figures/architecture.pdf}
 
 \caption{\textbf{\PocketMocker{} Design.} Details are specific to Android but
 would be similar on other platforms.}
@@ -54,7 +54,7 @@ deployed as needed to achieve the user's mocking objective. We describe how
 \PocketMocker{} accomplishes these tasks and overcomes two consistency
 challenges below.
 
-\subsubsection{Linking mocking traces and objectives:\space}
+\subsubsection{Linking mocking traces and objectives}
 
 To begin, \PocketMocker{} must be able to link mocking traces with
 user-defined objectives, so that it knows what trace will achieve each
@@ -69,7 +69,7 @@ provides a library of objectives (''appear more fit'') and associated
 suggestions for mocking traces (''take a walk''). We also expect users will
 be well-served by their own intuition.
 
-\subsubsection{Collecting, storing, and replaying traces:\space}
+\subsubsection{Collecting, storing, and replaying traces}
 
 Second, \PocketMocker{} must be able to collect, store and replay mocking
 traces. Trace collection is currently initiated by the \PocketMocker{} app and
@@ -85,7 +85,7 @@ databases associated with the trace and uses this new interface to inject it
 into the platform.  Any app requests for data contained in the mocking then
 return mocked data.
 
-\subsubsection{Initiating mocking sessions:\space}
+\subsubsection{Initiating mocking sessions}
 
 Third, \PocketMocker{}'s app helps the user remember to initiate mocking
 sessions. Each recorded trace can be annotated with a frequency which
@@ -107,7 +107,7 @@ how \PocketMocker{} masks differences between the mocking context and the
 real context. Then, we address spatial continuity, a specific consistency
 problem facing the \PocketMocker{} system.
 
-\subsubsection{Differences with the mocking context:\space}
+\subsubsection{Differences with the mocking context}
 
 Here we examine specific differences between the mocking context and the real
 context and address how \PocketMocker{} deals with each case:
@@ -167,7 +167,7 @@ always. Like battery levels, microphone readings also represent a continuity
 challenge which leaves a hole in the mocking context and we plan on addressing
 this current limitation of \PocketMocker{} in the future.
 
-\subsubsection{Ensuring spatial continuity:\space}
+\subsubsection{Ensuring spatial continuity}
 
 Given that smartphones can and do track their users' location, and that this
 information reveals a great deal about their lives, \PocketMocker{} is
