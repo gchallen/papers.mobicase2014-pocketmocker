@@ -1,5 +1,5 @@
 \input{./include/start.tex}
-
+\usepackage{flushend}
 \ifdefined\isdraft
   \usepackage{draftwatermark}
   \SetWatermarkText{Under Submission}
@@ -13,30 +13,23 @@
 \else
 \fi
 
+\author{
+  \IEEEauthorblockN{Nick DiRienzo and Geoffrey Challen}
+  \IEEEauthorblockA{Department of Computer Science and Engineering, University at Buffalo\\
+  \{nvdirien,challen\}@buffalo.edu}
+}
+
 \begin{document}
-\mainmatter
 \def\thetitle{Controlling Smartphone User Privacy via Objective-driven Context Mocking}
-\def\theauthors{Nick Dirienzo and Geoffrey Challen}
-\urldef{\authorsemail}\path|{nvdirien,challen}@buffalo.edu|
 
 \title{\thetitle}
-\titlerunning{\thetitle}
-
-\author{Nick DiRienzo\and Geoffrey Challen}
-\authorrunning{\theauthors}
-
-\institute{University at Buffalo\\
-338 Davis Hall, Buffalo, NY, 14260--2500\\
-\authorsemail
-}
-\toctitle{\thetitle}
-\tocauthor{\theauthors}
+%\titlerunning{\thetitle}
 \maketitle
 
 \hypersetup{
   pdfinfo={
     Title={\thetitle},
-    Author={\theauthors},
+    Author={Nick DiRienzo and Geoffrey Challen},
   },
 }
 
@@ -58,7 +51,7 @@
 \input{future.tex}
 \input{conclusion.tex}
 
-\bibliographystyle{abbrv}
+\bibliographystyle{IEEEtran}
 \bibliography{references}
 
 \end{document}
